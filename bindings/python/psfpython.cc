@@ -181,6 +181,7 @@ BOOST_PYTHON_MODULE(libpsf)
     to_python_converter<Struct, Struct_to_python>();
     
     class_< std::vector<std::string> >("StringVec")
+<<<<<<< HEAD
         .def(vector_indexing_suite<std::vector<std::string> >())
         ;
 
@@ -191,6 +192,10 @@ BOOST_PYTHON_MODULE(libpsf)
 
     class_<PSFDataSet>("PSFDataSet", "Open a psf results file.",
                        init<std::string>((arg("self"), arg("filename"))))
+        .def("close",
+             &PSFDataSet::close,
+             (arg("self")),
+             "Close the psf file")
         .def("get_nsweeps",
              &PSFDataSet::get_nsweeps,
              (arg("self")),
